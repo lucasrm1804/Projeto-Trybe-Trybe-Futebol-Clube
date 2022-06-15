@@ -14,11 +14,11 @@ Match.init({
   homeTeamGoals: INTEGER,
   awayTeam: INTEGER,
   awayTeamGoals: INTEGER,
-  inProgress: BOOLEAN
+  inProgress: BOOLEAN,
 }, {
   underscored: true,
   sequelize: db,
-  modelName: 'match ',
+  modelName: 'match',
   timestamps: false,
 });
 

@@ -3,11 +3,11 @@ import db from '.';
 import match from './match';
 
 class Team extends Model {
-  team_name: string;
+  teamName: string;
 }
 
 Team.init({
-  team_name: STRING
+  teamName: STRING,
 }, {
   underscored: true,
   sequelize: db,
@@ -22,4 +22,3 @@ Team.hasMany(match, { foreignKey: 'homeTeam', as: 'teamHome' });
 Team.hasMany(match, { foreignKey: 'awayTeam', as: 'teamAway' });
 
 export default Team;
-  

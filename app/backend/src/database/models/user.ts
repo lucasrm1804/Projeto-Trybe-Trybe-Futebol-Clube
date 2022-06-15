@@ -20,5 +20,4 @@ User.init({
   timestamps: false,
 });
 
-
 export default User;
