@@ -3,6 +3,7 @@ import db from '.';
 import match from './match';
 
 class Team extends Model {
+  id: number;
   teamName: string;
 }
 

@@ -2,6 +2,7 @@ import { Model, STRING } from 'sequelize';
 import db from '.';
 
 class User extends Model {
+  id: number;
   username: string;
   role: string;
   email: string;
@@ -16,7 +17,7 @@ User.init({
 }, {
   underscored: true,
   sequelize: db,
-  modelName: 'user ',
+  modelName: 'user',
   timestamps: false,
 });
 
