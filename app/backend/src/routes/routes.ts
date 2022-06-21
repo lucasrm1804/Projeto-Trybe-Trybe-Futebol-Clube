@@ -3,7 +3,8 @@ import { validEqualTeam, invalidIdTeam } from '../midlewares/validMatch';
 import { getTeamByIdController, getTeamsController } from '../controllers/teamController';
 import { loginController, loginValidate } from '../controllers/loginController';
 import { getMatchesController,
-  putMatchController, finishMatchController } from '../controllers/matchController';
+  putMatchController, finishMatchController,
+  editMatchController } from '../controllers/matchController';
 import vakidLoginController from '../midlewares/validLogin';
 
 const routes = Router();
@@ -15,5 +16,6 @@ routes.get('/teams/:id', getTeamByIdController);
 routes.get('/matches', getMatchesController);
 routes.post('/matches', validEqualTeam, invalidIdTeam, putMatchController);
 routes.patch('/matches/:id/finish', finishMatchController);
+routes.patch('/matches/:id', editMatchController);
 
 export default routes;

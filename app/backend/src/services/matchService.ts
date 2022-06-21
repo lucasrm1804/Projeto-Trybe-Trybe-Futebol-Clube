@@ -56,9 +56,14 @@ async function finishMatchService(id:number) {
   await match.update({ inProgress: false });
 }
 
+async function editMatchSerice(id: number, homeTeamGoals:number, awayTeamGoals:number) {
+  return Match.update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
+}
+
 export {
   getMatchesServices,
   getMatcheByProgressService,
   putMatchService,
   finishMatchService,
+  editMatchSerice,
 };

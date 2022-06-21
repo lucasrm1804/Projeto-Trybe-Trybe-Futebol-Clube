@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import { getMatchesServices,
   getMatcheByProgressService,
-  putMatchService, finishMatchService } from '../services/matchService';
+  putMatchService, finishMatchService,
+  editMatchSerice } from '../services/matchService';
 
 async function getMatchesController(req: Request, res: Response) {
   try {
@@ -32,8 +33,16 @@ async function finishMatchController(req: Request, res: Response) {
   }
 }
 
+async function editMatchController(req: Request, res: Response) {
+  const { id } = req.params;
+  const { homeTeamGoals, awayTeamGoals } = req.body;
+  await editMatchSerice(Number(id), homeTeamGoals, awayTeamGoals);
+  return res.status(200).json({ message: 'Match updated successfully' });
+}
+
 export {
   getMatchesController,
   putMatchController,
   finishMatchController,
+  editMatchController,
 };
