@@ -3,7 +3,6 @@ import routes from './routes/routes';
 
 class App {
   public app: express.Express;
-  // ...
 
   constructor() {
     this.app = express();
@@ -23,7 +22,6 @@ class App {
     this.app.use(accessControl);
   }
 
-  // ...
   public start(PORT: string | number):void {
     this.app.listen(PORT, () => console.log(`Escutando na porta ${PORT}`));
   }
@@ -31,5 +29,4 @@ class App {
 
 export { App };
 
-// A execução dos testes de cobertura depende dessa exportação
 export const { app } = new App();

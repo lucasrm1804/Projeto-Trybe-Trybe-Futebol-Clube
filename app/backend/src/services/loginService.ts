@@ -11,25 +11,23 @@ async function loginService(email: string, password: string) {
   const token = await getToken(user.id);
   const passwordOk = await compare(password, user.password);
 
-  if (!passwordOk) {
-    throw new Error('Incorrect email or password');
+  if (passwordOk) {
+    return { user: {
+      id: user.id,
+      username: user.username,
+      role: user.role,
+      email: user.email,
+    },
+    token };
   }
-  return { user: {
-    id: user.id,
-    username: user.username,
-    role: user.role,
-    email: user.email,
-  },
-  token };
 }
 
 async function getRoleService(authorization: string) {
   const token = await decodedToken(authorization) as { id: number };
   const user = await User.findByPk(token.id);
-  if (!user) {
-    throw new Error('Inexistent user');
+  if (user) {
+    return user.role;
   }
-  return user.role;
 }
 
 export {
